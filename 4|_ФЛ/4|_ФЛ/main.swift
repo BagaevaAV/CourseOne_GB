@@ -167,4 +167,5 @@ let trunkCar1 = TrunkCar(brand: "MAN",
                          ignition: EngineStatus.start,
                          windows: open)
 
+print
 
