@@ -19,7 +19,7 @@ import Foundation
 //
 //6. Вывести значения свойств экземпляров в консоль.
 class Car {
-    var brand: String
+    var brand: String = ""
     var year: Int
     
     
@@ -140,9 +140,7 @@ final class TrunkCar: Car {
          passengersCapacity: Passengers,
          maxTrunkVolume: Int,
          trunkForm: String,
-         cabin: String,
-         ignition: EngineStatus,
-         windows: WindowState)
+         cabin: String)
     {
         self.brand = brand
         self.usingFuel = usingFuel
@@ -152,20 +150,17 @@ final class TrunkCar: Car {
         self.maxTrunkVolume = maxTrunkVolume
         self.trunkForm = trunkForm
         self.cabin = cabin
-        self.ignition = ignition
-        self.windows = windows
     }
 }
-let trunkCar1 = TrunkCar(brand: "MAN",
+let trunkCar = TrunkCar(brand: "MAN",
                          usingFuel: .diesel,
                          trunkCarColor: .black,
                          doorsAmount: .two,
                          passengersCapacity: .two,
                          maxTrunkVolume: 2500,
                          trunkForm: "Truck",
-                         cabin: "cabin with a sleeping place",
-                         ignition: EngineStatus.start,
-                         windows: open)
+                         cabin: "cabin with a sleeping place")
 
-print
+
+print(trunkCar)
 
