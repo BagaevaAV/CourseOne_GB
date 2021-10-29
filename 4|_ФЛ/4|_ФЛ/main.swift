@@ -22,7 +22,6 @@ class Car {
     let brand: String
     let year: Int
 }
-
 enum Fuel {
     case gas
     case petrol
@@ -43,7 +42,7 @@ enum Doors {
 
 enum Passengers {
     case two
-    case fore
+    case foure
     case one
 }
 //MARK: enum взятые из прошлой домашки 3
@@ -57,34 +56,53 @@ enum WindowState {
     case close
 }
 
-enum TrunkState {
-    case full
-    case empty
-}
-
 class sportCar: Car {
+    let sportCar: String = "Ferrari"
     let usingFuel: Fuel
     let sportCarColor: Color
     let doorsAmount: Doors
     let passengersCapacity: Passengers
-    let ignition: EngineStatus
-    let windows: WindowState
-    let fuelTrank: TrunkState
+    
+    var maxSpeed: Int
+    var speedBooster: String
+    var ignition: EngineStatus {
+        willSet {
+            if newValue == .start {
+                print ("\(sportCar) engine is on")
+            } else {print("\(sportCar) engine is off")}
+        }
+    }
+    var windows: WindowState {
+        willSet {
+            if newValue == .open {
+                print("\(sportCar) windows are open")
+            } else { print("\(sportCar) windows are closed") }
+        }
+    }
 }
-var maxSpeed: Int
-var speedBooster: String
 
-class trunkCar: Car {
+final class trunkCar: Car {
+    let trunkCar: String = "MAN"
     let usingFuel: Fuel
     let sportCarColor: Color
     let doorsAmount: Doors
     let passengersCapacity: Passengers
-    let ignition: EngineStatus
-    let windows: WindowState
-    let fuelTrank: TrunkState
+    
+    var maxTrunckVolume: Int
+    var trunkForm: String
+    var cabin: String
+    var ignition: EngineStatus {
+        willSet {
+            if newValue == .start {
+            print ("\(trunkCar) engine is on")
+        } else {print("\(trunkCar) engine is off")}
+    }
 }
-var maxTrunckVolume: Int
-var trunkForm: String
-var cabin: String
-
-
+    var windows: WindowState {
+        willSet {
+            if newValue == .open {
+            print("\(trunkCar) windows are open")
+        } else { print("\(trunkCar) windows are closed") }
+    }
+}
+}
