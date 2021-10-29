@@ -19,8 +19,10 @@ import Foundation
 //
 //6. Вывести значения свойств экземпляров в консоль.
 class Car {
-    let brand: String
-    let year: Int
+    var brand: String
+    var year: Int
+    
+    
 }
 enum Fuel {
     case gas
@@ -56,8 +58,8 @@ enum WindowState {
     case close
 }
 
-class sportCar: Car {
-    let sportCar: String = "Ferrari"
+class SportCar: Car {
+    var sportCar: String
     let usingFuel: Fuel
     let sportCarColor: Color
     let doorsAmount: Doors
@@ -65,44 +67,104 @@ class sportCar: Car {
     
     var maxSpeed: Int
     var speedBooster: String
+    init(brand: String,
+         usingFuel: Fuel,
+         sportCarColor: Color,
+         doorsAmount: Doors,
+         passengersCapacity: Passengers)
+    {
+        self.brand = brand
+        self.usingFuel = usingFuel
+        self.sportCarColor = sportCarColor
+        self.doorsAmount = doorsAmount
+        self.passengersCapacity = passengersCapacity
+    }
     var ignition: EngineStatus {
         willSet {
-            if newValue == .start {
+            switch newValue {
+            case .start:
                 print ("\(sportCar) engine is on")
-            } else {print("\(sportCar) engine is off")}
+            case .stop:
+                print("\(sportCar) engine is off")
+            }
         }
     }
     var windows: WindowState {
         willSet {
-            if newValue == .open {
+            switch newValue {
+            case .open:
                 print("\(sportCar) windows are open")
-            } else { print("\(sportCar) windows are closed") }
+            case .close:
+                print("\(sportCar) windows are closed")
+            }
         }
     }
 }
 
-final class trunkCar: Car {
-    let trunkCar: String = "MAN"
+final class TrunkCar: Car {
+    
+    let trunkCar: String
     let usingFuel: Fuel
-    let sportCarColor: Color
+    let trunkCarColor: Color
     let doorsAmount: Doors
     let passengersCapacity: Passengers
     
-    var maxTrunckVolume: Int
+    var maxTrunkVolume: Int
     var trunkForm: String
     var cabin: String
     var ignition: EngineStatus {
         willSet {
-            if newValue == .start {
-            print ("\(trunkCar) engine is on")
-        } else {print("\(trunkCar) engine is off")}
+            switch newValue {
+            case .start:
+                print ("\(trunkCar) engine is on")
+            case .stop:
+                print("\(trunkCar) engine is off")
+            }
+        }
     }
-}
     var windows: WindowState {
         willSet {
-            if newValue == .open {
-            print("\(trunkCar) windows are open")
-        } else { print("\(trunkCar) windows are closed") }
+            switch newValue {
+            case .open:
+                print("\(trunkCar) windows are open")
+            case .close:
+                print("\(trunkCar) windows are closed")
+            }
+        }
+    }
+    
+    init(brand: String,
+         usingFuel: Fuel,
+         trunkCarColor: Color,
+         doorsAmount: Doors,
+         passengersCapacity: Passengers,
+         maxTrunkVolume: Int,
+         trunkForm: String,
+         cabin: String,
+         ignition: EngineStatus,
+         windows: WindowState)
+    {
+        self.brand = brand
+        self.usingFuel = usingFuel
+        self.trunkCarColor = trunkCarColor
+        self.doorsAmount = doorsAmount
+        self.passengersCapacity = passengersCapacity
+        self.maxTrunkVolume = maxTrunkVolume
+        self.trunkForm = trunkForm
+        self.cabin = cabin
+        self.ignition = ignition
+        self.windows = windows
     }
 }
-}
+let trunkCar1 = TrunkCar(brand: "MAN",
+                         usingFuel: .diesel,
+                         trunkCarColor: .black,
+                         doorsAmount: .two,
+                         passengersCapacity: .two,
+                         maxTrunkVolume: 2500,
+                         trunkForm: "Truck",
+                         cabin: "cabin with a sleeping place",
+                         ignition: EngineStatus.start,
+                         windows: open)
+
+
